@@ -18,6 +18,7 @@ The following commands have been implemented:
 **extension.embraceAngleBrackets** | Surround with Angle Brackets | `< >` | `ctrl+k,a` |
 **extension.embraceSingleQuotes** | Surround with Single Quotes | `' '` | `ctrl+k,q` |
 **extension.embraceDoubleQuotes** | Surround with Double Quotes | `" "` | `ctrl+k,o` |
+**extension.embraceBackQuotes** | Surround with Back Quotes | `\` \`` | `ctrl+k,b` |
 | | |
 
 -----------------------------------------------------------------------------------------------------------
@@ -63,7 +64,13 @@ To configure your own keyboard shortcuts, open the Command Palette with `ctrl+sh
             "key": "ctrl+k ctrl+o",
             "command": "extension.embraceDoubleQuotes",
             "when": "editorHasSelection && editorTextFocus"
+        },
+        {
+            "key": "ctrl+k ctrl+b",
+            "command": "extension.embraceBackQuotes",
+            "when": "editorHasSelection && editorTextFocus"
         }
+
 
 -----------------------------------------------------------------------------------------------------------
 

@@ -26,7 +26,8 @@
         "onCommand:extension.embraceCurlyBrackets",
         "onCommand:extension.embraceAngleBrackets",
         "onCommand:extension.embraceSingleQuotes",
-        "onCommand:extension.embraceDoubleQuotes"
+        "onCommand:extension.embraceDoubleQuotes",
+        "onCommand:extension.embraceBackQuotes"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -54,6 +55,10 @@
             {
                 "command": "extension.embraceDoubleQuotes",
                 "title": "Embrace: Surround With Double Quotes"
+            },
+            {
+                "command": "extension.embraceBackQuotes",
+                "title": "Embrace: Surround With Back Quotes"
             }
         ]
     },

@@ -10,6 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
     const disposable4 = vscode.commands.registerTextEditorCommand('extension.embraceAngleBrackets', (textEditor, edit) => { doSurround(textEditor, edit, '<', '>'); });
     const disposable5 = vscode.commands.registerTextEditorCommand('extension.embraceSingleQuotes', (textEditor, edit) => { doSurround(textEditor, edit, '\'', '\''); });
     const disposable6 = vscode.commands.registerTextEditorCommand('extension.embraceDoubleQuotes', (textEditor, edit) => { doSurround(textEditor, edit, '\"', '\"'); });
+    const disposable7 = vscode.commands.registerTextEditorCommand('extension.embraceBackQuotes', (textEditor, edit) => { doSurround(textEditor, edit, '\`', '\`'); });
 
     context.subscriptions.push(disposable1);
     context.subscriptions.push(disposable2);
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable4);
     context.subscriptions.push(disposable5);
     context.subscriptions.push(disposable6);
+    context.subscriptions.push(disposable7);
 }
 
 export function deactivate() {
