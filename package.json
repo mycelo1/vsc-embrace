@@ -26,7 +26,8 @@
         "onCommand:extension.embraceCurlyBrackets",
         "onCommand:extension.embraceAngleBrackets",
         "onCommand:extension.embraceSingleQuotes",
-        "onCommand:extension.embraceDoubleQuotes"
+        "onCommand:extension.embraceDoubleQuotes",
+        "onCommand:extension.embraceUser"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -54,8 +55,33 @@
             {
                 "command": "extension.embraceDoubleQuotes",
                 "title": "Embrace: Surround With Double Quotes"
+            },
+            {
+                "command": "extension.embraceUser",
+                "title": "Embrace: Surround With User-Specified Pair"
             }
-        ]
+
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Embrace configuration",
+            "properties": {
+                "embrace.pairs": {
+                    "type": "object",
+                    "default": {
+                        "(": ["( ", " )"],
+                        ")": ["(", ")"],
+                        "{": ["{ ", " }"],
+                        "}": ["{", "}"],
+                        "<": ["< ", " >"],
+                        ">": ["<", ">"],
+                        "[": ["[ ", " ]"],
+                        "]": ["[", "]"]
+                    },
+                    "description": "Mapping from triggers to before/after tokens."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",

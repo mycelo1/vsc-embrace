@@ -10,6 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
     const disposable4 = vscode.commands.registerTextEditorCommand('extension.embraceAngleBrackets', (textEditor, edit) => { doSurround(textEditor, edit, '<', '>'); });
     const disposable5 = vscode.commands.registerTextEditorCommand('extension.embraceSingleQuotes', (textEditor, edit) => { doSurround(textEditor, edit, '\'', '\''); });
     const disposable6 = vscode.commands.registerTextEditorCommand('extension.embraceDoubleQuotes', (textEditor, edit) => { doSurround(textEditor, edit, '\"', '\"'); });
+    const disposable7 = vscode.commands.registerTextEditorCommand('extension.embraceUser', (textEditor, edit) => { doUserSurround(textEditor, edit); });
 
     context.subscriptions.push(disposable1);
     context.subscriptions.push(disposable2);
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable4);
     context.subscriptions.push(disposable5);
     context.subscriptions.push(disposable6);
+    context.subscriptions.push(disposable7);
 }
 
 export function deactivate() {
@@ -42,5 +44,18 @@ function doSurround(textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, 
         textEditor.selections
         textEditor.selections = newSelections;
 
+    });
+}
+function doUserSurround(textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) {
+    vscode.window.showInputBox().then(function(trigger) {
+        if (trigger === undefined) {
+            return;
+        }
+        const pairs = vscode.workspace.getConfiguration('embrace').pairs;
+        var tokens = [trigger, trigger];
+        if (trigger in pairs) {
+            tokens = pairs[trigger]
+        }
+        doSurround(textEditor, edit, tokens[0], tokens[1]);
     });
 }
